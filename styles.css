@@ -1,0 +1,175 @@
+  :root{
+    --red:#CF102D;
+    --red-deep:#8C0B20;
+    --ink:#1C1815;
+    --paper:#EEECEB;
+    --card-bg:#FFFFFF;
+    --muted:#8D827A;
+    --border:#DED8D4;
+    --focus-ring: rgba(207,16,45,0.28);
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --red:#E8394F;
+      --red-deep:#C21A34;
+      --ink:#F3EEEC;
+      --paper:#161210;
+      --card-bg:#221C19;
+      --muted:#B9ADA6;
+      --border:#3A312C;
+      --focus-ring: rgba(232,57,79,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --red:#E8394F; --red-deep:#C21A34; --ink:#F3EEEC; --paper:#161210;
+    --card-bg:#221C19; --muted:#B9ADA6; --border:#3A312C;
+    --focus-ring: rgba(232,57,79,0.35);
+  }
+  html{ scroll-padding-top: env(safe-area-inset-top, 0px); height:100%; }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{
+    margin:0; min-height:100%; height:100%;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background-image: radial-gradient(circle, var(--border) 1px, transparent 1.7px);
+    background-size: 24px 24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{
+    max-width:420px; margin:0 auto;
+    min-height:100dvh;
+    display:flex; flex-direction:column;
+    padding: max(28px, env(safe-area-inset-top,0px)) 22px max(28px, env(safe-area-inset-bottom,0px));
+  }
+  .brand{ display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+  .brand-mark{
+    width:40px; height:40px; border-radius:11px;
+    background: linear-gradient(155deg, var(--red), var(--red-deep));
+    display:flex; align-items:center; justify-content:center;
+    flex:none;
+    color:#fff; font-family:'Space Grotesk',Arial,sans-serif;
+    font-weight:700; font-size:19px; line-height:1;
+  }
+  .brand-name{
+    font-family:'Space Grotesk',Arial,sans-serif;
+    font-weight:700; font-size:21px; letter-spacing:-0.01em;
+  }
+  .tagline{
+    color:var(--muted); font-size:14.5px; line-height:1.5;
+    margin: 2px 0 26px; max-width:34ch;
+  }
+
+  .illustration{
+    position:relative; height:150px; margin-bottom:22px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .illustration svg{ width:230px; height:150px; overflow:visible; }
+  .card-shine{
+    position:absolute; top:0; left:0; width:70px; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: translateX(-160px) rotate(0deg);
+    pointer-events:none;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .card-shine{ animation: shine 1.6s ease 0.5s 1 both; }
+  }
+  @keyframes shine{
+    0%{ transform:translateX(-160px); opacity:0; }
+    15%{ opacity:1; }
+    60%{ opacity:1; }
+    100%{ transform:translateX(300px); opacity:0; }
+  }
+
+  .authcard{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .tabs{
+    display:flex; background:var(--paper); border-radius:12px; padding:4px;
+    margin-bottom:20px; position:relative;
+  }
+  .tab{
+    flex:1; border:0; background:transparent; padding:9px 0;
+    font-family:'Inter',sans-serif; font-size:14.5px; font-weight:600;
+    color:var(--muted); border-radius:9px; cursor:pointer;
+    transition: color .15s ease;
+  }
+  .tab[aria-selected="true"]{
+    background:var(--red); color:#fff;
+  }
+
+  form{ display:none; flex-direction:column; gap:14px; }
+  form.active{ display:flex; }
+
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-size:13px; font-weight:600; color:var(--muted); }
+  .input-wrap{ position:relative; display:flex; align-items:center; }
+  .field input{
+    width:100%; font-size:16px; font-family:'Inter',sans-serif;
+    padding:11px 13px; border-radius:10px; border:1px solid var(--border);
+    background:var(--paper); color:var(--ink);
+  }
+  :root[data-theme="dark"] .field input, .field input{ background: var(--card-bg); }
+  .field input{ background: color-mix(in srgb, var(--paper) 55%, var(--card-bg)); }
+  .field input:focus{
+    outline:none; border-color:var(--red);
+    box-shadow:0 0 0 4px var(--focus-ring);
+  }
+  .field input.has-toggle{ padding-right:42px; }
+  .pw-toggle{
+    position:absolute; right:6px; background:none; border:0; padding:7px;
+    cursor:pointer; color:var(--muted); display:flex; border-radius:8px;
+  }
+  .pw-toggle:focus-visible, .tab:focus-visible, .submit:focus-visible, .link-btn:focus-visible{
+    outline:2px solid var(--red); outline-offset:2px;
+  }
+  .pw-toggle svg{ width:18px; height:18px; }
+
+  .row-between{ display:flex; justify-content:flex-end; margin-top:-6px; }
+  .link-btn{
+    background:none; border:0; color:var(--red); font-size:13.5px;
+    font-family:'Inter',sans-serif; font-weight:600; cursor:pointer; padding:2px;
+  }
+
+  .submit{
+    margin-top:4px; width:100%; border:0; border-radius:11px;
+    background:var(--red); color:#fff; font-family:'Inter',sans-serif;
+    font-weight:600; font-size:15px; padding:13px 0; cursor:pointer;
+    transition: background .15s ease;
+  }
+  .submit:hover{ background:var(--red-deep); }
+
+  .helper-note{
+    margin-top:12px; font-size:13px; line-height:1.5; color:var(--muted);
+    background:var(--paper); border:1px dashed var(--border);
+    border-radius:10px; padding:10px 12px; display:none;
+  }
+  .helper-note.show{ display:block; }
+  @media (prefers-reduced-motion:no-preference){
+    .helper-note.show{ animation: fadein .25s ease both; }
+  }
+  @keyframes fadein{ from{opacity:0; transform:translateY(-3px);} to{opacity:1; transform:none;} }
+
+  .switch-row{
+    text-align:center; margin-top:16px; font-size:13.5px; color:var(--muted);
+  }
+
+  footer{
+    margin-top:auto; padding-top:26px; text-align:center;
+    color:var(--muted); font-size:12px; line-height:1.6;
+  }
+  footer .dot{ margin:0 6px; }
+
+  @media (min-width:460px){
+    .page{ justify-content:center; }
+    footer{ margin-top:26px; }
+  }

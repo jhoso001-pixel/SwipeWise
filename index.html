@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#CF102D">
+<title>SwipeWise — Log in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">S</div>
+    <span class="brand-name">SwipeWise</span>
+  </div>
+  <p class="tagline">Make your meal swipes and dining dollars last the whole semester.</p>
+
+  <div class="illustration" aria-hidden="true">
+    <svg viewBox="0 0 260 170">
+      <g transform="rotate(-5 130 88)">
+        <rect x="24" y="20" width="212" height="136" rx="16" fill="url(#cardGrad)"/>
+        <rect x="24" y="20" width="212" height="136" rx="16" fill="none" stroke="rgba(255,255,255,0.18)"/>
+        <rect x="42" y="42" width="176" height="17" rx="3" fill="rgba(0,0,0,0.32)"/>
+        <text x="42" y="104" fill="rgba(255,255,255,0.85)" font-family="Inter, sans-serif" font-size="10" font-weight="600" letter-spacing="0.5">SWIPES THIS WEEK</text>
+        <g>
+          <circle cx="46" cy="126" r="7" fill="#fff"/>
+          <circle cx="66" cy="126" r="7" fill="#fff"/>
+          <circle cx="86" cy="126" r="7" fill="#fff"/>
+          <circle cx="106" cy="126" r="7" fill="#fff"/>
+          <circle cx="126" cy="126" r="7" fill="#fff"/>
+          <circle cx="146" cy="126" r="7" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.6"/>
+          <circle cx="166" cy="126" r="7" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.6"/>
+          <circle cx="186" cy="126" r="7" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.6"/>
+        </g>
+      </g>
+      <defs>
+        <linearGradient id="cardGrad" x1="24" y1="20" x2="236" y2="156" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#E23A50"/>
+          <stop offset="1" stop-color="#8C0B20"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="card-shine"></div>
+  </div>
+
+  <div class="authcard">
+    <div class="tabs" role="tablist" aria-label="Choose login or create account">
+      <button class="tab" id="tab-login" role="tab" aria-selected="true" aria-controls="form-login">Log in</button>
+      <button class="tab" id="tab-signup" role="tab" aria-selected="false" aria-controls="form-signup">Create account</button>
+    </div>
+
+    <form id="form-login" class="active" novalidate>
+      <div class="field">
+        <label for="login-email">School email</label>
+        <input id="login-email" type="email" autocomplete="email" placeholder="you@plattsburgh.edu" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Password</label>
+        <div class="input-wrap">
+          <input id="login-password" class="has-toggle" type="password" autocomplete="current-password" required>
+          <button type="button" class="pw-toggle" data-target="login-password" aria-label="Show password" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="row-between">
+        <button type="button" class="link-btn" id="forgot-link">Forgot password?</button>
+      </div>
+      <button type="submit" class="submit">Log in</button>
+      <p class="helper-note" id="note-login">This is a design preview — logging in isn't connected to an account system yet.</p>
+    </form>
+
+    <form id="form-signup" novalidate>
+      <div class="field">
+        <label for="signup-name">Name</label>
+        <input id="signup-name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="signup-email">School email</label>
+        <input id="signup-email" type="email" autocomplete="email" placeholder="you@plattsburgh.edu" required>
+      </div>
+      <div class="field">
+        <label for="signup-password">Password</label>
+        <div class="input-wrap">
+          <input id="signup-password" class="has-toggle" type="password" autocomplete="new-password" required>
+          <button type="button" class="pw-toggle" data-target="signup-password" aria-label="Show password" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="signup-confirm">Confirm password</label>
+        <input id="signup-confirm" type="password" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="submit">Create account</button>
+      <p class="helper-note" id="note-signup">This is a design preview — account creation isn't wired to a backend yet.</p>
+    </form>
+
+    <p class="switch-row" id="switch-row">New here? <button type="button" class="link-btn" id="switch-btn">Create an account</button></p>
+  </div>
+
+  <footer>
+    SwipeWise is an independent student project.
+    <span class="dot">·</span>Not affiliated with or endorsed by SUNY Plattsburgh.
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
